@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>🎄 Merry Christmas 🎄</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+    height:100vh;
+    background:radial-gradient(circle at top,#1b5e20,#0b3d2e 60%,#062c1f);
+    overflow:hidden;
+    font-family:'Poppins',sans-serif;
+    color:white;
+}
+
+.header{
+    position:fixed;
+    top:20px;
+    width:100%;
+    text-align:center;
+    font-family:'Great Vibes',cursive;
+    font-size:56px;
+    letter-spacing:2px;
+    text-shadow:0 0 15px rgba(255,255,255,0.8);
+    z-index:10;
+}
+
+.snowman{
+    position:fixed;
+    bottom:60px;
+    right:40px;
+    font-size:90px;
+    animation:bounce 2s infinite;
+}
+@keyframes bounce{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-10px)}
+}
+
+/* Tuyết */
+.snow{
+    position:fixed;
+    top:-10px;
+    color:white;
+    font-size:14px;
+    animation:fall linear infinite;
+}
+@keyframes fall{
+    to{transform:translateY(110vh)}
+}
+
+.container{
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:80px;
+}
+
+.tree{
+    font-size:130px;
+    animation:treeGlow 2s infinite alternate;
+}
+@keyframes treeGlow{
+    from{filter:drop-shadow(0 0 5px gold)}
+    to{filter:drop-shadow(0 0 25px red)}
+}
+
+.letter{
+    width:360px;
+    background:linear-gradient(#fff7e6,#fbe9d7);
+    color:#7b241c;
+    border-radius:20px;
+    padding:35px;
+    text-align:center;
+    cursor:pointer;
+    box-shadow:0 0 40px rgba(255,255,255,0.6);
+    transition:0.5s;
+}
+.letter:hover{transform:scale(1.1)}
+
+.title{
+    font-family:'Great Vibes',cursive;
+    font-size:38px;
+    margin-bottom:15px;
+}
+
+.subtitle{
+    font-size:14px;
+    opacity:0.8;
+}
+
+.message{
+    display:none;
+    margin-top:25px;
+    font-size:16px;
+    line-height:1.6;
+    animation:fadeIn 1.2s;
+}
+@keyframes fadeIn{
+    from{opacity:0;transform:translateY(10px)}
+    to{opacity:1;transform:translateY(0)}
+}
+
+.footer{
+    position:fixed;
+    bottom:15px;
+    width:100%;
+    text-align:center;
+    font-size:12px;
+    opacity:0.6;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">🎄 Merry Christmas 🎄</div>
+<div class="snowman">☃️</div>
+
+<audio id="music" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/11/22/audio_9efb0a19aa.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+    <div class="tree">🎄</div>
+
+    <div class="letter" onclick="openLetter()">
+        <div class="title">Christmas Letter</div>
+        <div class="subtitle">Nhấn để mở lời nhắn 🎁</div>
+
+        <div class="message" id="msg">
+            🎄✨ Chúc chị Nhàn Giáng Sinh vui vẻ ☃️❤️<br><br>
+            Mong chị luôn cười thật tươi,<br>
+            Nhận thật nhiều yêu thương và niềm vui 🎁🎄
+        </div>
+    </div>
+
+    <div class="tree">🎄</div>
+</div>
+
+<div class="footer">❄ Merry Christmas & Happy New Year ❄</div>
+
+<script>
+function openLetter(){
+    document.getElementById('msg').style.display='block';
+    document.getElementById('music').play();
+}
+
+// Tạo tuyết
+for(let i=0;i<80;i++){
+    let s=document.createElement('div');
+    s.className='snow';
+    s.innerHTML='❄';
+    s.style.left=Math.random()*100+'vw';
+    s.style.animationDuration=(Math.random()*5+6)+'s';
+    s.style.opacity=Math.random();
+    s.style.fontSize=(Math.random()*10+10)+'px';
+    document.body.appendChild(s);
+}
+</script>
+
+</body>
+</html>
